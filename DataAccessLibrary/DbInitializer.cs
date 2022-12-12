@@ -41,16 +41,16 @@ namespace DataAccess.EFCore
 
             var projects = new Project[]
             {
-                new Project{Name="Project1"},
-                new Project{Name="Project2"},
-                new Project{Name="Project3"},
-                new Project{Name="Project4"},
-                new Project{Name="Project5"},
-                new Project{Name="Project6"},
-                new Project{Name="Project7"},
-                new Project{Name="Project8"},
-                new Project{Name="Project9"},
-                new Project{Name="Project10"},
+                new Project{Name="Project1", DeveloperId = 1},
+                new Project{Name="Project2", DeveloperId = 2},
+                new Project{Name="Project3", DeveloperId = 3},
+                new Project{Name="Project4", DeveloperId = 4},
+                new Project{Name="Project5", DeveloperId = 5},
+                new Project{Name="Project6", DeveloperId = 6},
+                new Project{Name="Project7", DeveloperId = 7},
+                new Project{Name="Project8", DeveloperId = 8},
+                new Project{Name="Project9", DeveloperId = 9},
+                new Project{Name="Project10", DeveloperId = 10},
             };
 
             foreach (Project p in projects)
