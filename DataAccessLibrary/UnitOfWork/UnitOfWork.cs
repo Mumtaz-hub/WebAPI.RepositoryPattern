@@ -11,7 +11,10 @@ namespace DataAccess.EFCore.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationContext _context;
-       
+
+        public IDeveloperRepository Developers { get; private set; }
+        public IProjectRepository Projects { get; private set; }
+        
         public UnitOfWork(ApplicationContext context)
         {
             _context = context;
@@ -19,9 +22,7 @@ namespace DataAccess.EFCore.UnitOfWork
             Projects = new ProjectRepository(_context);
         }
 
-        public IDeveloperRepository Developers { get; private set; }
-
-        public IProjectRepository Projects { get; private set; }
+       
 
         public int Complete()
         {
