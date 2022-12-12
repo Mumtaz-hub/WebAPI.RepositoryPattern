@@ -25,10 +25,22 @@ public class Program
         builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
-
-  
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
+        using (var scope = app.Services.CreateScope())
+        {
+            try
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ApplicationContext>();
+                DbInitializer.Initialize(context);
+            }
+            catch (Exception ex)
+            {
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred while seeding the database.");
+            }
+        }
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
